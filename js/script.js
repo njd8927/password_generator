@@ -3,42 +3,45 @@
 var generateBtn = document.querySelector("#generate");
 var generate = document.querySelector('#password');
 
-function showPassword(pass) {
-    password.innerText = pass;
+
+function showPassword(password) {
+    var passwordText = document.querySelector('#password');
+
+    passwordText.value = password.join('');
 }
 
 function generatePassword (optionsObj) {
-    var up = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-    var low = ["abcdefghijklmnopqrstuvwxyz"];
-    var numb = ["0123456789"];
-    var spCh = [" !#$%&'()*+,-./:;<=>?@\^_`{|}~"];
+    var low = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var up = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var numb = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var specChar = ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '?', '/', '<', '>', '|', '{', '}', '[', ']', ':', ';', '.', ','];
 
-    passOpt = [];
-    passChoices = [];
-
-    if (optionsObj.up) {
-        passOpt = passOpt.concat(up);
-    }
+    var passwordChoices = [];
+    var passwordList = [];
 
     if (optionsObj.low) {
-        passOpt = passOpt.concat(low);
+        passwordList = passwordList.concat(low);
+    }
+
+    if (optionsObj.up) {
+        passwordList = passwordList.concat(up);
     }
 
     if (optionsObj.numb) {
-        passOpt = passOpt.concat(numb);
+        passwordList = passwordList.concat(numb);
     }
 
-    if (optionsObj.spCh) {
-        passOpt = passOpt.concat(spCh);
+    if (optionsObj.specChar) {
+        passwordList = passwordList.concat(specChar);
     }
    
-    for (var p = 0; p < optionsObj.amount; p++) {
-        var randomSelection = passOpt[Math.floor(Math.random() * passOpt.length)];
+    for (var i = 0; i < optionsObj.amount; i++) {
+        var randomSelection = passwordList[Math.floor(Math.random() * passwordList.length)];
 
-        passChoices.push(randomSelection);
+        passwordChoices.push(randomSelection);
     }
 
-    showPassword(passChoices);
+    showPassword(passwordChoices);
 }
 
 
@@ -68,3 +71,5 @@ function getOptions(){
 }
 
 generateBtn.addEventListener('click', getOptions);
+
+
