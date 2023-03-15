@@ -26,4 +26,4 @@ Link to deployed webpage: https://njd8927.github.io/password_generator/
 
 The following shows the web application's appearance and functionality:
 
-![The Password Generator application displays a button to generate your random password.](../03-JavaScript-Copy/02-Challenge/Assets/03-javascript-homework-demo.png)
+![The Password Generator application displays a button to generate your random password.](./assets/readme.png)
